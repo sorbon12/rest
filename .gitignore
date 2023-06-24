@@ -1,0 +1,45 @@
+# Папки Laravel
+vendor/
+node_modules/
+public/storage/
+
+# Файлы среды выполнения
+.env
+.env.local
+.env.php
+.env.test
+.env.dusk.local
+
+# Кэш Laravel
+bootstrap/cache/
+storage/*.key
+storage/debugbar/
+
+# Логи Laravel
+storage/logs/*.log
+storage/logs/*.txt
+storage/logs/*.xml
+storage/logs/*.html
+
+# Файлы сессий Laravel
+storage/framework/sessions/
+
+# Файлы кэша Blade
+storage/framework/views/
+
+# Конфигурационные файлы IDE
+.idea/
+.vscode/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Файлы миграций и сидеров
+database/migrations/*.php
+database/seeders/*.php
+
+# Файлы команд Artisan
+public/hot/
+public/web.config
+
