@@ -62,7 +62,6 @@ class ProductController extends Controller
             'categories' => 'required|array',
             'categories.*' => 'exists:categories,id'
         ]);
-    
         $product = new Product();
         $product->name = $validatedData['name'];
         $product->price = $validatedData['price'];
@@ -71,7 +70,7 @@ class ProductController extends Controller
         $product->save();
         $product->categories()->attach($validatedData['categories']);
     
-        return response()->json($product, 201);
+        return response()->json($product);
     }
 
     /**
@@ -127,6 +126,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->deleted = true;
         $product->save();
-        return response()->json(["status"=>'success'], 204);
+        return response()->json(["status"=>'success']);
     }
 }

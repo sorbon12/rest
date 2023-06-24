@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {   
         $categories = Category::all();
-        return response()->json($categories, 200);
+        return response()->json($categories);
     }
 
     /**
@@ -27,11 +27,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
         $category = new Category();
-        $category->name = $request->input('name');
+        $category->name =  $validatedData['name'];
         $category->save();
-        return response()->json($category, 200);
+        return response()->json($category);
     }
 
     /**
@@ -44,7 +46,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return response()->json($category, 200);
+        return response()->json($category);
     }
 
     /**
@@ -56,9 +58,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
         $category = Category::findOrFail($id);
+        if ($category) {
+            $category->name=$validatedData['name'];
+        }
+        $category->save();
 
-        return response()->json(["status"=>'success'], 200);
+        return response()->json(["status"=>'success']);
     }
 
     /**
@@ -76,6 +85,6 @@ class CategoryController extends Controller
         }
         $category->delete();
     
-        return response()->json(["status"=>'success'], 204);
+        return response()->json(["status"=>'success']);
     }
 }
