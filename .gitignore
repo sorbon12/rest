@@ -35,9 +35,7 @@ storage/framework/views/
 .DS_Store
 Thumbs.db
 
-# Файлы миграций и сидеров
-database/migrations/*.php
-database/seeders/*.php
+
 
 # Файлы команд Artisan
 public/hot/
